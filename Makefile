@@ -1,21 +1,24 @@
-SRCS = 
+SRCS = ./hello.asm 
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.asm=.o)
 
-CFLAGS = -Werror -Wextra -Wall
+FLAGS = -f elf64
 
 NAME = libasm.a
 
 all: $(NAME)
 
-CC = cc
+AS = nasm
+LD = ld
 
-%.o : %.c 
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o : %.asm 
+	$(AS) $(FLAGS) $< -o $@
+
+#$(NAME) : $(OBJS)
+#	ar rcs $(NAME) $(OBJS)
 
 $(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-
+	$(LD) -o $(NAME) $(OBJS)
 
 clean:
 	rm -rf $(OBJS)
