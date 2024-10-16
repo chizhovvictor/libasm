@@ -1,6 +1,6 @@
-SRCS = ./hello.asm 
+SRCS =	./ft_write.s
 
-OBJS = $(SRCS:.asm=.o)
+OBJS = $(SRCS:.s=.o)
 
 FLAGS = -f elf64
 
@@ -9,16 +9,15 @@ NAME = libasm.a
 all: $(NAME)
 
 AS = nasm
-LD = ld
 
-%.o : %.asm 
+%.o : %.s 
 	$(AS) $(FLAGS) $< -o $@
 
-#$(NAME) : $(OBJS)
-#	ar rcs $(NAME) $(OBJS)
-
 $(NAME) : $(OBJS)
-	$(LD) -o $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+#$(NAME) : $(OBJS)
+#	$(LD) -o $(NAME) $(OBJS)
 
 clean:
 	rm -rf $(OBJS)
