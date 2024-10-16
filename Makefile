@@ -1,30 +1,37 @@
-SRCS =	./ft_write.s
+NAME = a.out
 
-OBJS = $(SRCS:.s=.o)
+LIBASM = ./libasm/libasm.a
 
-FLAGS = -f elf64
+SRCS = ./main.c
 
-NAME = libasm.a
+HEADER = ./header.h
 
-all: $(NAME)
+OBJS = $(SRCS:.c=.o)
 
-AS = nasm
+CFLAGS = -z noexecstack
 
-%.o : %.s 
-	$(AS) $(FLAGS) $< -o $@
+all: $(NAME) $(LIBASM)
 
-$(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+CC = cc
 
-#$(NAME) : $(OBJS)
-#	$(LD) -o $(NAME) $(OBJS)
+%.o : %.c 
+	$(CC) $(CFLAGS) -c $< -o $@ 
+
+$(NAME) : $(OBJS) $(LIBASM)
+	$(CC) -I $(HEADER) $(CFLAGS) $(OBJS) $(LIBASM) -o $(NAME)
+
+$(LIBASM) : 
+	@make -C ./libasm
 
 clean:
+	@make clean -C ./libasm
 	rm -rf $(OBJS)
 
 fclean:
+	@make fclean -C ./libasm
 	rm -rf $(OBJS) $(NAME)
 
 re: fclean all
 
 .PHONY:	all clean fclean re
+
