@@ -14,11 +14,10 @@ ft_write:
 	
 	mov rax, 1
 	syscall
-
-	cmp rax, -1
-	jl error_exit	
+	
+	cmp rax, -9	
+	jc error_exit
 	ret
-
 
 error_exit:
 	

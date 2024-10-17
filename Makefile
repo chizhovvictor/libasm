@@ -8,7 +8,7 @@ HEADER = ./header.h
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -z noexecstack
+CFLAGS = -z noexecstack -no-pie
 
 all: $(NAME) $(LIBASM)
 
