@@ -3,5 +3,6 @@
 
 #include "./libasm/libasm.h"
 #include <errno.h>
+#include <string.h>
 
 #endif
