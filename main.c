@@ -22,24 +22,30 @@ void check_write()
 
 void check_strlen()
 {
-	printf("------------------- ft_strlen --------------------\n");
+	printf("-------------- ft_strlen -------------------\n");
 	char *str = "lol";
 	char *bad_str = NULL;
 	
 	printf("x = %d\n", ft_strlen(str));
 	printf("y = %d\n", strlen(str));
 
-	//printf("x_er = %d\n", ft_strlen(bad_str));
-	//printf("y_er = %d\n", strlen(bad_str));
+	printf("x_er = %d\n", ft_strlen(bad_str));
+	printf("y_er = %d\n", strlen(bad_str));
 
 
+}
+
+void check_read()
+{
+	printf("--------------- ft_read -------------------\n");
 }
 
 
 
 int main()
 {
-	//check_write();
-	check_strlen();	
+	check_write();
+	check_strlen();
+	check_read();	
 	return 0;
 }
