@@ -10,30 +10,24 @@ section .data
 message: db "error",10
 
 section .text
-ft_write: 
-	
-	mov rax, 1
-	syscall
+ft_write:
 
-	cmp rax, -1
-	jl error_exit	
-	ret
+	mov rax, 1				; output 
+	syscall					; write(rdi, rsi, rdx)			
+
+	cmp rax, -1				; cmp(rax, -1)
+	jl error_exit			; if (rax <= -1) jump	
+	ret						; return rax
 
 
 error_exit:
 	
-	; mov rsi, message
-	; mov rdi, 1
- 	; mov rdx, 5
-	; mov rax, 1
-	; syscall
-
 	
-	call __errno_location
-	; mov [rax], -9
-	mov rax, -1
-	ret
-
-
+	mov rdi, rax			; rdi = rax
+	neg rdi					; rdi = -rdi (need pisitive number)
+	call __errno_location	; rax = &errno
+	mov [rax], rdi			; *rax = rdi 
+	mov rax, -1				; rax = -1
+	ret						; return rax
 
 
