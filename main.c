@@ -60,6 +60,21 @@ void check_strcmp()
 
 }
 
+void check_strdup()
+{
+	char *dst_1 = NULL;
+	char *dst_2 = NULL;
+
+	char *src = "Hello";
+	
+	dst_1 = ft_strdup(src);
+	dst_2 = strdup(src);
+	
+	printf("ft_strdup: %s\n", dst_1);
+	printf("strdup: %s\n", dst_2);
+
+}
+
 
 
 int main()
@@ -68,6 +83,9 @@ int main()
 	//check_strlen();
 	//check_read();	
 	//check_strcpy();
-	check_strcmp();
+	//check_strcmp();
+	//check_strdup();
+	char *lol = ft_strdup("lol");
+	printf("%s\n", lol);
 	return 0;
 }
