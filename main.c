@@ -50,6 +50,16 @@ void check_strcpy()
 	printf("ft_strcpy: %s\n", dst);
 }
 
+void check_strcmp()
+{
+	char *first_str = "lol";
+	char *second_str = "pizdec";
+
+	printf("ft_strcmp: %d\n", ft_strcmp(first_str, second_str));
+	printf("strcmp: %d\n", strcmp(first_str, second_str));
+
+}
+
 
 
 int main()
@@ -57,6 +67,7 @@ int main()
 	//check_write();
 	//check_strlen();
 	//check_read();	
-	check_strcpy();
+	//check_strcpy();
+	check_strcmp();
 	return 0;
 }

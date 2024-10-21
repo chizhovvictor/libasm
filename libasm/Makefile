@@ -1,4 +1,4 @@
-SRCS =	./ft_write.s ./ft_strlen.s ./ft_read.s ./ft_strcpy.s
+SRCS =	./ft_write.s ./ft_strlen.s ./ft_read.s ./ft_strcpy.s ./ft_strcmp.s
 
 OBJS = $(SRCS:.s=.o)
 
