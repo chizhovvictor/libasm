@@ -40,12 +40,23 @@ void check_read()
 	printf("--------------- ft_read -------------------\n");
 }
 
+void check_strcpy()
+{
+	printf("--------------- ft_strcpy -----------------\n");
+	char dst[100];
+	const char *src = "Hello";
+
+	ft_strcpy(dst, src);
+	printf("ft_strcpy: %s\n", dst);
+}
+
 
 
 int main()
 {
-	check_write();
-	check_strlen();
-	check_read();	
+	//check_write();
+	//check_strlen();
+	//check_read();	
+	check_strcpy();
 	return 0;
 }
